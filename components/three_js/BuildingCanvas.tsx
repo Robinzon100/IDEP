@@ -174,7 +174,7 @@ const BuildingCanvas: React.FC = () => {
     return (
         <>
             <div className="hero_container">
-                <video playsInline muted loop autoPlay width="320" height="240" src="/video.mp4" />
+                <video playsInline muted loop autoPlay width="320" height="240" src="/video_compressed.mp4" />
                 <h1 className='title'>IDEP Storage for true <br /> distributed applications</h1>
                 {/* <h1 className='title2'>IDEP Storage for true <br /> distributed applications</h1> */}
                 <div id="BuildingCanvas" />
