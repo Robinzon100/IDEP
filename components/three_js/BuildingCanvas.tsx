@@ -114,8 +114,8 @@ const BuildingCanvas: React.FC = () => {
 
 
         // ─── CONTROLS ────────────────────────────────────────────────────
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
+        // const controls = new OrbitControls(camera, renderer.domElement);
+        // controls.enableDamping = true;
 
 
 
