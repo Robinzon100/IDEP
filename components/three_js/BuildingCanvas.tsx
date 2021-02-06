@@ -41,7 +41,7 @@ const BuildingCanvas: React.FC = () => {
         const canvas =  document.querySelector('#BuildingCanvas') as HTMLElement
         const container =  document.querySelector('.hero_container') as HTMLElement
         // const axesHelper = new THREE.AxesHelper(5);
-        const video =  document.querySelector('video') as HTMLElement
+        const video =  document.querySelector('video') 
         const clock = new THREE.Clock()
 
         let mousePosition = {
