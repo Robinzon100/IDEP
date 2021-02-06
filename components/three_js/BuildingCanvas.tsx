@@ -5,7 +5,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { fragment } from './shaders/fragmentShader';
 import { vertex } from './shaders/vertexShader';
 import gsap from "gsap";
-
+import hammerjs from "hammerjs";
 
 
 
@@ -38,10 +38,10 @@ const BuildingCanvas: React.FC = () => {
 
 
     function init() {
-        const canvas = document.querySelector('#BuildingCanvas')
-        const container = document.querySelector('.hero_container')
+        const canvas =  document.querySelector('#BuildingCanvas') as HTMLElement
+        const container =  document.querySelector('.hero_container') as HTMLElement
         // const axesHelper = new THREE.AxesHelper(5);
-        const video = document.querySelector('video')
+        const video =  document.querySelector('video') as HTMLElement
         const clock = new THREE.Clock()
 
         let mousePosition = {
@@ -60,8 +60,10 @@ const BuildingCanvas: React.FC = () => {
         camera.position.set(0, 0, 1.1)
 
         // ─── RENDERER ────────────────────────────────────────────────────
-        const renderer = new WebGLRenderer({ antialias: true });
-        renderer.setPixelRatio(window.devicePixelRatio);
+        const renderer = new WebGLRenderer({ antialias: true, alpha: true });
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.setSize(window.innerWidth, window.innerHeight);
 
 
@@ -76,7 +78,8 @@ const BuildingCanvas: React.FC = () => {
         // ─── PLANE ───────────────────────────────────────────────────────
         const sphere = new THREE.Mesh(new THREE.SphereGeometry(1, 52, 52), videoMaterial);
         const ring = new THREE.Mesh(new THREE.RingGeometry(1.5, 2, 50), videoMaterial)
-        ring.rotation.set(Math.PI / 2, 0, 5);
+        ring.rotation.set(Math.PI / 2, -15, 0);
+        // ring.rotation.set(Math.PI / 2, -15, 0);
         ring.castShadow = true
         sphere.receiveShadow = true; //default
 
@@ -85,32 +88,59 @@ const BuildingCanvas: React.FC = () => {
         // controls.enableDamping = true;
 
 
-        container.addEventListener('mousewheel', (e: any) => {
+        const planetAnimation = (e, direction?) => {
             gsap.to(camera.position, {
-                duration: 3.8,
-                z: e.deltaY == 100 ? 4 : 1.1,
-                y: e.deltaY == 100 ? 0.8 : 0,
+                duration: 4,
+                z: e.deltaY == 100 || direction == 'panup'? 4 : 1.1,
+                y: e.deltaY == 100 || direction == 'panup'? 0.8 : 0,
                 ease: "Expo.easeOut"
             })
 
-            if (e.deltaY == 100) {
+            if (e.deltaY == 100 || direction == 'panup') {
                 gsap.to('.title', {
-                    duration: 1.8,
+                    duration: 1.2,
                     y: -200,
                     skewY: 10,
                     opacity: 0,
-                    ease: "Expo.easeOut"
+                    ease: "Expo.easeOut",
+                    clipPath: 'circle(0%)'
                 })
-            }else{
+            } else {
                 gsap.to('.title', {
-                    duration: 1.8,
+                    duration: 1.2,
                     y: 0,
                     skewY: 0,
                     opacity: 1,
-                    ease: "Expo.easeOut"
+                    ease: "Expo.easeOut",
+                    clipPath: 'circle(100%)'
                 })
             }
+        }
+
+
+
+
+
+
+        let heroCanvasGestures = new hammerjs(container)
+        heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
+        heroCanvasGestures.on('panup pandown', (e) =>  planetAnimation(e, e.type))
+        
+        container.addEventListener('mousewheel', (e) => planetAnimation(e))
+
+        window.addEventListener('resize', _ => {
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            camera.aspect = window.innerWidth / window.innerHeight
+            camera.updateProjectionMatrix()
+
         })
+
+
+
+        // window.addEventListener('touchmove', (e) => {
+        //     console.log(e)
+        // })
 
 
         function animate() {
@@ -128,7 +158,8 @@ const BuildingCanvas: React.FC = () => {
         const scene = new Scene();
         // scene.add(axesHelper);
         scene.add(camera);
-        scene.background = new THREE.Color(0xffffff);
+        renderer.setClearColor(0xffffff, 0)
+        // scene.background = new THREE.Color(0xffffff);
         scene.add(sphere);
         scene.add(ring)
         canvas.appendChild(renderer.domElement);
@@ -144,7 +175,8 @@ const BuildingCanvas: React.FC = () => {
         <>
             <div className="hero_container">
                 <video playsInline muted loop autoPlay width="320" height="240" src="/video.mp4" />
-                <h1 className='title'>IDEP Storage for true <br/> distributed applications</h1>
+                <h1 className='title'>IDEP Storage for true <br /> distributed applications</h1>
+                {/* <h1 className='title2'>IDEP Storage for true <br /> distributed applications</h1> */}
                 <div id="BuildingCanvas" />
             </div>
             <style jsx>{`
@@ -164,14 +196,24 @@ const BuildingCanvas: React.FC = () => {
 
                 #BuildingCanvas{
                     position: absolute;
-                    z-index: 1;
+                    z-index: 3;
                 }
 
                 .title{
+                    user-select: none;
                     font-size: calc(2rem + 5vw);
                     text-align: left;
                     color: white;
-                    z-index: 2; 
+                    z-index: 4; 
+                    user-select: none;
+                    text-shadow: 0px 18px 50px #1213193b;
+                    clip-path: circle(100%);
+                }
+                .title2{
+                    font-size: calc(2rem + 5vw);
+                    text-align: left;
+                    color: red;
+                    z-index: 1; 
                     user-select: none;
                     text-shadow: 0px 18px 50px #1213193b;
                 }
