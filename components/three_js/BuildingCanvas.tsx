@@ -6,6 +6,7 @@ import { fragment } from './shaders/fragmentShader';
 import { vertex } from './shaders/vertexShader';
 import gsap from "gsap";
 import hammerjs from "hammerjs";
+import { planetAnimation } from './utils/animations/hero';
 
 
 
@@ -30,6 +31,13 @@ const BuildingCanvas: React.FC = () => {
         fragmentShader: fragment()
     });
 
+
+
+
+
+
+
+
     useEffect(() => {
         init();
     }, [])
@@ -37,12 +45,19 @@ const BuildingCanvas: React.FC = () => {
 
 
 
+
+
+
+
+
     function init() {
-        const canvas =  document.querySelector('#BuildingCanvas') as HTMLElement
-        const container =  document.querySelector('.hero_container') as HTMLElement
+        const canvas = document.querySelector('#BuildingCanvas') as HTMLElement
+        const container = document.querySelector('.hero_container') as HTMLElement
         // const axesHelper = new THREE.AxesHelper(5);
-        const video =  document.querySelector('video') 
+        const video = document.querySelector('video')
         const clock = new THREE.Clock()
+        const scene = new Scene();
+
 
         let mousePosition = {
             x: 0,
@@ -58,6 +73,8 @@ const BuildingCanvas: React.FC = () => {
         // ─── CAMERA ──────────────────────────────────────────────────────
         const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
         camera.position.set(0, 0, 1.1)
+        // camera.position.set(0, 0, 3)
+
 
         // ─── RENDERER ────────────────────────────────────────────────────
         const renderer = new WebGLRenderer({ antialias: true, alpha: true });
@@ -75,72 +92,51 @@ const BuildingCanvas: React.FC = () => {
             toneMapped: true
         })
 
-        // ─── PLANE ───────────────────────────────────────────────────────
+
+        // ─── MESHES ───────────────────────────────────────────────────────
         const sphere = new THREE.Mesh(new THREE.SphereGeometry(1, 52, 52), videoMaterial);
-        const ring = new THREE.Mesh(new THREE.RingGeometry(1.5, 2, 50), videoMaterial)
+        sphere.castShadow = true;
+        sphere.receiveShadow = false;
+
+        const ring = new THREE.Mesh(new THREE.RingGeometry(1.5, 2, 50), new THREE.MeshBasicMaterial(
+            {
+                color: 0xffffff,
+                side: THREE.DoubleSide
+            }))
         ring.rotation.set(Math.PI / 2, -15, 0);
         // ring.rotation.set(Math.PI / 2, -15, 0);
-        ring.castShadow = true
         sphere.receiveShadow = true; //default
 
+
+        // ─── LIGHTS ────────────────────────────────────────────────────
+       
+
+
+
         // ─── CONTROLS ────────────────────────────────────────────────────
-        // const controls = new OrbitControls(camera, renderer.domElement);
-        // controls.enableDamping = true;
-
-
-        const planetAnimation = (e, direction?) => {
-            gsap.to(camera.position, {
-                duration: 4,
-                z: e.deltaY == 100 || direction == 'panup'? 4 : 1.1,
-                y: e.deltaY == 100 || direction == 'panup'? 0.8 : 0,
-                ease: "Expo.easeOut"
-            })
-
-            if (e.deltaY == 100 || direction == 'panup') {
-                gsap.to('.title', {
-                    duration: 1.2,
-                    y: -200,
-                    skewY: 10,
-                    opacity: 0,
-                    ease: "Expo.easeOut",
-                    clipPath: 'circle(0%)'
-                })
-            } else {
-                gsap.to('.title', {
-                    duration: 1.2,
-                    y: 0,
-                    skewY: 0,
-                    opacity: 1,
-                    ease: "Expo.easeOut",
-                    clipPath: 'circle(100%)'
-                })
-            }
-        }
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
 
 
 
 
 
 
+
+
+        // ─── EVENTS ────────────────────────────────────────────────────
         let heroCanvasGestures = new hammerjs(container)
         heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-        heroCanvasGestures.on('panup pandown', (e) =>  planetAnimation(e, e.type))
-        
-        container.addEventListener('mousewheel', (e) => planetAnimation(e))
+        heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
+        container.addEventListener('mousewheel', (e) => planetAnimation(e, camera))
 
         window.addEventListener('resize', _ => {
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.setSize(window.innerWidth, window.innerHeight)
             camera.aspect = window.innerWidth / window.innerHeight
             camera.updateProjectionMatrix()
-
         })
 
-
-
-        // window.addEventListener('touchmove', (e) => {
-        //     console.log(e)
-        // })
 
 
         function animate() {
@@ -155,10 +151,9 @@ const BuildingCanvas: React.FC = () => {
 
 
         // ─── ADDING SCENES ───────────────────────────────────────────────
-        const scene = new Scene();
         // scene.add(axesHelper);
         scene.add(camera);
-        renderer.setClearColor(0xffffff, 0)
+        // renderer.setClearColor(0xffffff, 0)
         // scene.background = new THREE.Color(0xffffff);
         scene.add(sphere);
         scene.add(ring)
@@ -174,7 +169,7 @@ const BuildingCanvas: React.FC = () => {
     return (
         <>
             <div className="hero_container">
-                <video playsInline muted loop autoPlay width="320" height="240" src="/video_compressed.mp4" />
+                <video playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3.mp4" />
                 <h1 className='title'>IDEP Storage for true <br /> distributed applications</h1>
                 {/* <h1 className='title2'>IDEP Storage for true <br /> distributed applications</h1> */}
                 <div id="BuildingCanvas" />
