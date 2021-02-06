@@ -51,8 +51,8 @@ const BuildingCanvas: React.FC = () => {
 
 
     function init() {
-        const canvas = document.querySelector('#BuildingCanvas') as HTMLElement
-        const container = document.querySelector('.hero_container') as HTMLElement
+        const canvas = document.querySelector('#BuildingCanvas')
+        const container = document.querySelector('.hero_container')
         // const axesHelper = new THREE.AxesHelper(5);
         const video = document.querySelector('video')
         const clock = new THREE.Clock()
@@ -67,7 +67,6 @@ const BuildingCanvas: React.FC = () => {
         window.addEventListener('mousemove', (e) => {
             // mousePosition.x = e.clientX / window.innerWidth - 0.5
             // mousePosition.y = - (e.clientY / window.innerHeight - 0.5)
-
         })
 
         // ─── CAMERA ──────────────────────────────────────────────────────
@@ -86,6 +85,7 @@ const BuildingCanvas: React.FC = () => {
 
         // ─── VIDEO TEXTURE ───────────────────────────────────────────────
         const videoTexture = new THREE.VideoTexture(video)
+        // videoTexture.magFilter = THREE.NearestFilter
         const videoMaterial = new THREE.MeshBasicMaterial({
             map: videoTexture,
             side: THREE.DoubleSide,
@@ -98,6 +98,7 @@ const BuildingCanvas: React.FC = () => {
         sphere.castShadow = true;
         sphere.receiveShadow = false;
 
+
         const ring = new THREE.Mesh(new THREE.RingGeometry(1.5, 2, 50), new THREE.MeshBasicMaterial(
             {
                 color: 0xffffff,
@@ -109,7 +110,7 @@ const BuildingCanvas: React.FC = () => {
 
 
         // ─── LIGHTS ────────────────────────────────────────────────────
-       
+
 
 
 
@@ -125,7 +126,7 @@ const BuildingCanvas: React.FC = () => {
 
 
         // ─── EVENTS ────────────────────────────────────────────────────
-        let heroCanvasGestures = new hammerjs(container)
+        const heroCanvasGestures = new hammerjs(container as HTMLElement)
         heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
         heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
         container.addEventListener('mousewheel', (e) => planetAnimation(e, camera))
@@ -151,10 +152,8 @@ const BuildingCanvas: React.FC = () => {
 
 
         // ─── ADDING SCENES ───────────────────────────────────────────────
-        // scene.add(axesHelper);
         scene.add(camera);
-        // renderer.setClearColor(0xffffff, 0)
-        // scene.background = new THREE.Color(0xffffff);
+        renderer.setClearColor(0xffffff, 0)
         scene.add(sphere);
         scene.add(ring)
         canvas.appendChild(renderer.domElement);
@@ -169,9 +168,9 @@ const BuildingCanvas: React.FC = () => {
     return (
         <>
             <div className="hero_container">
-                <video playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3.mp4" />
-                <h1 className='title'>IDEP Storage for true <br /> distributed applications</h1>
-                {/* <h1 className='title2'>IDEP Storage for true <br /> distributed applications</h1> */}
+                <video playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3_compressed.mp4" />
+                {/* <h1 className='title'>IDEP Storage for true <br /> distributed applications</h1> */}
+                <h1 className='title2'>IDEP Storage for true <br /> distributed applications</h1>
                 <div id="BuildingCanvas" />
             </div>
             <style jsx>{`

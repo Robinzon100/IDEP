@@ -8,23 +8,23 @@ export const planetAnimation = (e, camera, direction?) => {
         ease: "Expo.easeOut"
     })
 
-    if (e.deltaY == 100 || direction == 'panup') {
-        gsap.to('.title', {
-            duration: 1.2,
-            y: -200,
-            skewY: 10,
-            opacity: 0,
-            ease: "Expo.easeOut",
-            clipPath: 'circle(0%)'
-        })
-    } else {
-        gsap.to('.title', {
-            duration: 1.2,
-            y: 0,
-            skewY: 0,
-            opacity: 1,
-            ease: "Expo.easeOut",
-            clipPath: 'circle(100%)'
-        })
-    }
+    // if (e.deltaY == 100 || direction == 'panup') {
+    //     gsap.to('.title', {
+    //         duration: 1.2,
+    //         y: -200,
+    //         skewY: 10,
+    //         opacity: 0,
+    //         ease: "Expo.easeOut",
+    //         clipPath: 'circle(0%)'
+    //     })
+    // } else {
+    //     gsap.to('.title', {
+    //         duration: 1.2,
+    //         y: 0,
+    //         skewY: 0,
+    //         opacity: 1,
+    //         ease: "Expo.easeOut",
+    //         clipPath: 'circle(100%)'
+    //     })
+    // }
 }
