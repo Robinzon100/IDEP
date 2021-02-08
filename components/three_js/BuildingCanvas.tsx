@@ -96,10 +96,10 @@ const BuildingCanvas: React.FC = () => {
         const sphere = new THREE.Mesh(new THREE.SphereGeometry(1, 52, 52), videoMaterial);
         sphere.rotation.set(0, Math.PI / 1.1, 0)
 
-        const ring = new THREE.Mesh(new THREE.RingGeometry(1.5, 2, 50), new THREE.MeshBasicMaterial(
+        const ring = new THREE.Mesh(new THREE.RingGeometry(1.5, 2, 80), new THREE.MeshMatcapMaterial(
             {
-                color: 0xffffff,
-                side: THREE.DoubleSide
+                side: THREE.DoubleSide,
+                matcap: new THREE.TextureLoader().load('/textures/matcaps/white_black.png')
             }))
         ring.rotation.set(Math.PI / 2, -15, 0);
         // ring.rotation.set(Math.PI / 2, -15, 0);
@@ -123,17 +123,18 @@ const BuildingCanvas: React.FC = () => {
 
 
         // ─── EVENTS ────────────────────────────────────────────────────
-        videoIntro.addEventListener('ended', ({ currentTarget }) => [
+        videoIntro.addEventListener('ended', ({ currentTarget }) => {
             fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
-        ])
+            
+            const heroCanvasGestures = new hammerjs(container as HTMLElement)
+            heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
+            heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
+            container.addEventListener('mousewheel', (e) => planetAnimation(e, camera))
+        })
 
 
 
-        const heroCanvasGestures = new hammerjs(container as HTMLElement)
-        heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-        heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
-        container.addEventListener('mousewheel', (e) => planetAnimation(e, camera))
-     
+
 
         window.addEventListener('resize', _ => {
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
