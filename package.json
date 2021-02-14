@@ -15,6 +15,7 @@
     "raw-loader": "^4.0.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-feather": "^2.0.9",
     "sass": "^1.32.5",
     "three": "^0.125.2"
   },

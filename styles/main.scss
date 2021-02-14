@@ -1,5 +1,13 @@
-@import 'abstracts/variables';
+@import 'abstracts/color.variables';
+
+@import 'fonts/sizes';
+@import 'fonts/weights';
+@import 'fonts/styles';
 
 @import 'base/base';
 
+@import 'components/navigation';
+
 @import 'util/hover';
+
+@import 'pages/landing/hero/hero'

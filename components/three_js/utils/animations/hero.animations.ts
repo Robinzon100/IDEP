@@ -5,7 +5,7 @@ export const planetAnimation = (e, camera, direction?) => {
     gsap.to(camera.position, {
         duration: 4,
         z: scrollConditional ? 4 : .8,
-        y: scrollConditional ? 0.8 : 0,
+        y: scrollConditional ? 0.9 : 0,
         ease: "Expo.easeOut"
     })
 
@@ -63,10 +63,11 @@ export const dissableBlurOnElement = (e: any, elementClassname: string) => {
 
 
     if (e.clientX > x && e.clientX < x + width && e.clientY > y && e.clientY < y + height) {
-       element.classList.add('dissable_blur')
-       element.style.zIndex = '5'
-    }else{
-        element.classList.remove('dissable_blur')
+        //    element.classList.add('dissable_blur')
+        element.style.zIndex = '5'
+    } else {
+        // element.classList.remove('dissable_blur')
         element.style.zIndex = '1'
-    } 
+    }
 }
+

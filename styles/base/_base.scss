@@ -28,8 +28,7 @@ dd {
 }
 
 html {
-    font-size: 62.5%;
-    scroll-behavior: smooth;
+    // scroll-behavior: smooth;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased !important;
@@ -37,15 +36,12 @@ html {
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: var(--bg);
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     box-sizing: border-box;
     font-family: inter;
-
-    
-
-
+    color: var(--black);
 }
 
 ul[class],
@@ -55,6 +51,11 @@ ol[class] {
 
 a:not([class]) {
     text-decoration-skip-ink: auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-green);
 }
 
 img,

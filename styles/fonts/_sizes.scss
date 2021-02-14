@@ -1,0 +1,65 @@
+// ====================== IN VARIABLES
+$f-size-h1: calc(35px + (85 - 35) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h2: calc(30px + (75 - 30) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h3: calc(32px + (65 - 32) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h4: calc(28px + (45 - 28) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h5: calc(28px + (32 - 28) * ((100vw - 300px) / (1900 - 700))) !important;
+
+
+$f-size-p1: calc(20px + (24.4 - 20) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-p2: calc(18px + (22.4 - 18) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-p3: calc(16px + (20.4 - 16) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-p4: calc(14px + (18.4 - 14) * ((100vw - 300px) / (1900 - 700))) !important;
+
+
+
+
+.f-size-p1 {
+    font-size: $f-size-p1;
+    line-height: 143.7%;
+}
+
+.f-size-p2 {
+    font-size: $f-size-p2;
+    line-height: 143.7%;
+}
+
+.f-size-p3 {
+    font-size: $f-size-p3;
+    line-height: 143.7%;
+}
+
+.f-size-p4 {
+    font-size: $f-size-p4;
+    line-height: 143.7%;
+}
+
+
+
+/// =============================== HEADING
+
+.f-size-h1 {
+    font-size: $f-size-h1;
+    line-height: 94.5%;
+}
+
+.f-size-h2 {
+    font-size: $f-size-h2;
+    line-height: 94.5%;
+}
+
+.f-size-h3 {
+    font-size: $f-size-h3;
+    line-height: 94.5%;
+}
+
+.f-size-h4 {
+    font-size: $f-size-h4;
+    line-height: 94.5%;
+}
+
+
+.f-size-h5 {
+    font-size: $f-size-h5;
+    line-height: 94.5%;
+}

@@ -1,0 +1,17 @@
+.navigation{
+
+    
+    .link_container:hover .paper_icon path{
+        fill: url('#cpo_gradient');
+        stroke: none; 
+    }
+    .link_container:hover .paper_icon polyline{
+        stroke: var(--bg); 
+    }
+
+
+    .link_container:hover .message_icon path{
+        fill: url('#ro_gradient');
+        stroke: none;
+    }
+}
