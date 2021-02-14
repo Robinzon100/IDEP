@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
             side: THREE.DoubleSide,
             toneMapped: true
         })
-       
+
 
 
         // ─── MESHES ───────────────────────────────────────────────────────
@@ -129,13 +129,14 @@ const Hero: React.FC = () => {
         videoIntro.addEventListener('ended', ({ currentTarget }) => {
             fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
 
-              
+
 
             const heroCanvasGestures = new hammerjs(container as HTMLElement)
             heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
             heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
             container.addEventListener('mousewheel', (e) => {
-                console.log('scrolled'); planetAnimation(e, camera)
+                console.log('scrolled');
+                planetAnimation(e, camera)
             })
         })
 
@@ -189,6 +190,12 @@ const Hero: React.FC = () => {
                     <Button className='hero_button' size={6} ctaMode={true} style={{ zIndex: 10 }}>
                         <p className="f-size-h5 f-weight-r">get started</p>
                     </Button>
+                </div>
+                <div className="bg_gradients">
+                    <div className="purple" style={{ transform: 'translate(160%, 222%)' }} />
+                    <div className="orange" style={{ transform: 'translate(230%, 190%)' }} />
+                    <div className="cyan" style={{ transform: 'translate(-110%, 100%) scale(1.5)' }} />
+                    <div className="cyan" style={{ transform: 'translate(480%, -100%) scale(1.5)' }} />
                 </div>
                 <div className="hero_canvas" />
             </section>

@@ -75,6 +75,7 @@ const Navigation = () => {
             </svg>
             <style jsx>{`
                 .navigation {
+                    opacity: 0;
                    position: fixed;
                    z-index: 99;
                    width: 100vw;

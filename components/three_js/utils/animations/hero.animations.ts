@@ -17,9 +17,9 @@ export const planetAnimation = (e, camera, direction?) => {
     })
 
     if (scrollConditional) {
-        fadeInTransformUp('.main_header', 'in')
+        fadeInTransformUp(['.main_header', '.hero_button', '.navigation'], 'in')
     } else {
-        fadeInTransformUp('.main_header', 'out')
+        fadeInTransformUp(['.main_header', '.hero_button', '.navigation'], 'out')
     }
 }
 
@@ -33,10 +33,13 @@ export const fadeOutFadeIn = (fadeOutElementClass: string, fadeInElementClassesA
     })
 
     fadeInElementClassesArray.forEach((className, i) => {
+        tl.from(className, {
+            opacity: 0
+        })
         tl.to(className, {
             opacity: 1,
-            duration: 1.4,
-            delay: .8,
+            duration: .6,
+            delay: .3,
             ease: "Expo.easeOut",
         })
     })
@@ -44,13 +47,20 @@ export const fadeOutFadeIn = (fadeOutElementClass: string, fadeInElementClassesA
 
 
 
-export const fadeInTransformUp = (fadeInElementClassName: string, fade: 'in' | 'out') => {
-    gsap
-        .to(fadeInElementClassName, {
-            display: fade == 'in' ? 'initial' : 'noen',
-            opacity: fade == 'in' ? 1 : 0,
-            y: fade == 'out' ? 80 : 0
-        })
+export const fadeInTransformUp = (fadeInElementClassNames: string[], fade: 'in' | 'out') => {
+
+
+    fadeInElementClassNames.forEach((className, i) => {
+        gsap
+            .to(className, {
+                display: fade == 'in' ? 'initial' : 'noen',
+                opacity: fade == 'in' ? 1 : 0,
+                delay: .4,
+                duration: .6,
+                y: fade == 'out' ? 80 : 0
+            })
+
+    })
 }
 
 

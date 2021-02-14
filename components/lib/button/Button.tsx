@@ -37,7 +37,6 @@ const Button: FC<props> = ({
                 onClick={(e) => !onClick || disabled && onClick(e)}
                 onMouseOver={onHover}
                 style={style}>
-
                 <div className={`button_container ${ctaMode && 'cta_mode'}`}>
                     {children}
                 </div>
@@ -106,6 +105,7 @@ const Button: FC<props> = ({
 
                 @media screen and (max-width: 1000px) {
                     .button_container {
+                        border-radius: calc(${size} * .28vw);
                         padding: calc(${size} * .8vw) calc(${size} * 2vw);
                     }
                 }
