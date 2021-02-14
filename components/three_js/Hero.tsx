@@ -187,7 +187,14 @@ const Hero: React.FC = () => {
                 <div className="content">
                     <h1 className='f-size-h1 title'>IDEP</h1>
                     <h1 className='f-size-h1 main_header'>Intergalactic <span className='colored_word'> Data </span><br /> Exchange Protocol</h1>
-                    <Button className='hero_button' size={6} ctaMode={true} style={{ zIndex: 10 }}>
+                    <Button
+                        className='hero_button'
+                        onClick={() => {
+                            new Audio('/audio/buttons/dingtrim.mp3').play()
+                        }}
+                        size={6}
+                        ctaMode={true}
+                        style={{ zIndex: 10 }}>
                         <p className="f-size-h5 f-weight-r">get started</p>
                     </Button>
                 </div>

@@ -39,7 +39,7 @@ export const fadeOutFadeIn = (fadeOutElementClass: string, fadeInElementClassesA
         tl.to(className, {
             opacity: 1,
             duration: .6,
-            delay: .3,
+            delay: i * .15,
             ease: "Expo.easeOut",
         })
     })
@@ -55,7 +55,7 @@ export const fadeInTransformUp = (fadeInElementClassNames: string[], fade: 'in' 
             .to(className, {
                 display: fade == 'in' ? 'initial' : 'noen',
                 opacity: fade == 'in' ? 1 : 0,
-                delay: .4,
+                delay: i * .15,
                 duration: .6,
                 y: fade == 'out' ? 80 : 0
             })

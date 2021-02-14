@@ -34,7 +34,7 @@ const Button: FC<props> = ({
             <button
                 className={`button ${className}`}
                 id={`${id}`}
-                onClick={(e) => !onClick || disabled && onClick(e)}
+                onClick={(e) => !disabled && onClick(e)}
                 onMouseOver={onHover}
                 style={style}>
                 <div className={`button_container ${ctaMode && 'cta_mode'}`}>
