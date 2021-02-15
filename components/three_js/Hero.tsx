@@ -49,6 +49,8 @@ const Hero: React.FC = () => {
 
 
     function init() {
+        const bodyElement = document.querySelector<HTMLBodyElement>('body')
+        bodyElement.style.position = 'fixed'
         const canvas = document.querySelector('.hero_canvas')
         const container = document.querySelector('.hero_container')
         const videoTextureElement = document.querySelector('.texture_video')
@@ -131,11 +133,19 @@ const Hero: React.FC = () => {
 
 
 
-            const heroCanvasGestures = new hammerjs(container as HTMLElement)
+            const heroCanvasGestures = new hammerjs(canvas as HTMLElement)
             heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-            heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
-            container.addEventListener('mousewheel', (e) => {
-                console.log('scrolled');
+            heroCanvasGestures.on('panup pandown pan swipe', (e) => planetAnimation(e, camera, e.type))
+            canvas.addEventListener('mousewheel', (e: WheelEvent) => {
+                if (e.deltaY > 0) {
+                    setTimeout(() => {
+                        bodyElement.style.position = 'initial'
+                    }, 1000);
+                } else {
+                    setTimeout(() => {
+                        bodyElement.style.position = 'fixed'
+                    }, 500);
+                }
                 planetAnimation(e, camera)
             })
         })
@@ -182,10 +192,14 @@ const Hero: React.FC = () => {
     return (
         <>
             <section className="hero_container" onMouseMove={e => dissableBlurOnElement(e, '.main_header')}>
+                <div className="hero_canvas" />
+
                 <video className='texture_video' playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3_higher_resolution.mp4" />
                 <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" />
-                <h1 className='f-size-h1 title'>IDEP</h1>
+
+
                 <div className="content">
+                    <h1 className='f-size-h1 title'>IDEP</h1>
                     <h1 className='f-size-h1 main_header'>Intergalactic <span className='colored_word'> Data </span><br /> Exchange Protocol</h1>
                     <Button
                         className='hero_button'
@@ -200,9 +214,10 @@ const Hero: React.FC = () => {
                         <p className="f-size-h5 f-weight-r">get started</p>
                     </Button>
                 </div>
+
                 <div className="bg_gradients">
-                    <div className="purple" style={{ top: '84%', left: '30%' }} />
-                    <div className="orange" style={{ top: '70%', left: '50%' }} />
+                    <div className="purple" style={{ bottom: '15%', left: '30%' }} />
+                    <div className="orange" style={{ bottom: '25%', left: '50%' }} />
                     <div className="cyan" style={{ top: '30%', left: '-27%', transform: 'scale(1.5)' }} />
                     <div className="cyan" style={{ top: '-10%', right: '-28%', transform: 'scale(1.5)' }} />
                 </div>
@@ -211,7 +226,6 @@ const Hero: React.FC = () => {
                     <div className="image" />
                     <p className="description f-size-p2 f-weight-m">IDEP is a next generation deStorage blockchain infrastructure, providing a series of tools and protocols for a truly decentralized data market.</p>
                 </div>
-                <div className="hero_canvas" />
 
             </section>
         </>

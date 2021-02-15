@@ -28,6 +28,8 @@
 
   .hero_container {
       overflow: hidden;
+      position: relative;
+
       //   height: 140vh;
 
       .bg_gradients {
@@ -35,7 +37,7 @@
           height: 100%;
           top: 0;
           position: absolute;
-          filter: blur(100px);
+          filter: blur(120px);
           overflow-x: hidden;
 
           & * {
@@ -68,6 +70,7 @@
           opacity: 0;
           z-index: 3;
           top: 0;
+          left: 0;
       }
 
 
@@ -138,7 +141,7 @@
           width: 37%;
           margin: 17.5vw auto;
 
-          @media screen and (max-width: 1000px){
+          @media screen and (max-width: 1000px) {
               width: 90%;
               margin-top: 40vh;
           }
