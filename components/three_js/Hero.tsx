@@ -126,19 +126,19 @@ const Hero: React.FC = () => {
 
 
         // ─── EVENTS ────────────────────────────────────────────────────
-        videoIntro.addEventListener('ended', ({ currentTarget }) => {
-            fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
+        // videoIntro.addEventListener('ended', ({ currentTarget }) => {
+        fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
 
 
 
-            const heroCanvasGestures = new hammerjs(container as HTMLElement)
-            heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-            heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
-            container.addEventListener('mousewheel', (e) => {
-                console.log('scrolled');
-                planetAnimation(e, camera)
-            })
+        const heroCanvasGestures = new hammerjs(container as HTMLElement)
+        heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
+        heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
+        container.addEventListener('mousewheel', (e) => {
+            console.log('scrolled');
+            planetAnimation(e, camera)
         })
+        // })
 
 
 
@@ -183,14 +183,16 @@ const Hero: React.FC = () => {
         <>
             <section className="hero_container" onMouseMove={e => dissableBlurOnElement(e, '.main_header')}>
                 <video className='texture_video' playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3_higher_resolution.mp4" />
-                <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" />
-                <div className="content">
+                {/* <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" /> */}
                     <h1 className='f-size-h1 title'>IDEP</h1>
+                <div className="content">
                     <h1 className='f-size-h1 main_header'>Intergalactic <span className='colored_word'> Data </span><br /> Exchange Protocol</h1>
                     <Button
                         className='hero_button'
                         onClick={() => {
-                            new Audio('/audio/buttons/dingtrim.mp3').play()
+                            let buttonAudio = new Audio('/audio/buttons/dingtrim.mp3')
+                            buttonAudio.volume = 0.2
+                            buttonAudio.play()
                         }}
                         size={6}
                         ctaMode={true}
@@ -199,18 +201,19 @@ const Hero: React.FC = () => {
                     </Button>
                 </div>
                 <div className="bg_gradients">
-                    <div className="purple" style={{ transform: 'translate(160%, 222%)' }} />
-                    <div className="orange" style={{ transform: 'translate(230%, 190%)' }} />
-                    <div className="cyan" style={{ transform: 'translate(-110%, 100%) scale(1.5)' }} />
-                    <div className="cyan" style={{ transform: 'translate(480%, -100%) scale(1.5)' }} />
+                    <div className="purple" style={{ top: '84%', left: '30%' }} />
+                    <div className="orange" style={{ top: '70%', left: '50%' }} />
+                    <div className="cyan" style={{ top: '30%', left: '-27%', transform: 'scale(1.5)' }} />
+                    <div className="cyan" style={{ top: '-10%', right: '-28%', transform: 'scale(1.5)' }} />
+                </div>
+
+                <div className="description_box">
+                    <div className="image" />
+                    <p className="description f-size-p2 f-weight-m">IDEP is a next generation deStorage blockchain infrastructure, providing a series of tools and protocols for a truly decentralized data market.</p>
                 </div>
                 <div className="hero_canvas" />
+
             </section>
-            <style jsx>{`
-              
-
-
-            `}</style>
         </>
     )
 }
