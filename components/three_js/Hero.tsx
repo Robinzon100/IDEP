@@ -126,19 +126,19 @@ const Hero: React.FC = () => {
 
 
         // ─── EVENTS ────────────────────────────────────────────────────
-        // videoIntro.addEventListener('ended', ({ currentTarget }) => {
-        fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
+        videoIntro.addEventListener('ended', ({ currentTarget }) => {
+            fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
 
 
 
-        const heroCanvasGestures = new hammerjs(container as HTMLElement)
-        heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-        heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
-        container.addEventListener('mousewheel', (e) => {
-            console.log('scrolled');
-            planetAnimation(e, camera)
+            const heroCanvasGestures = new hammerjs(container as HTMLElement)
+            heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
+            heroCanvasGestures.on('panup pandown', (e) => planetAnimation(e, camera, e.type))
+            container.addEventListener('mousewheel', (e) => {
+                console.log('scrolled');
+                planetAnimation(e, camera)
+            })
         })
-        // })
 
 
 
@@ -183,8 +183,8 @@ const Hero: React.FC = () => {
         <>
             <section className="hero_container" onMouseMove={e => dissableBlurOnElement(e, '.main_header')}>
                 <video className='texture_video' playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3_higher_resolution.mp4" />
-                {/* <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" /> */}
-                    <h1 className='f-size-h1 title'>IDEP</h1>
+                <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" />
+                <h1 className='f-size-h1 title'>IDEP</h1>
                 <div className="content">
                     <h1 className='f-size-h1 main_header'>Intergalactic <span className='colored_word'> Data </span><br /> Exchange Protocol</h1>
                     <Button
