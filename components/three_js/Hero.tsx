@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
             y: 0
         }
 
-        navigator.userAgent.search("Firefox") > -1 && videoTextureElement.setAttribute('src', "/textures/videos/version3_compressed.mp4");
+        navigator.userAgent.search("Firefox") > -1 || window.innerWidth < 600 && videoTextureElement.setAttribute('src', "/textures/videos/version3_compressed.mp4");
 
         window.addEventListener('mousemove', (e) => {
             // mousePosition.x = e.clientX / window.innerWidth - 0.5
@@ -135,7 +135,9 @@ const Hero: React.FC = () => {
 
             const heroCanvasGestures = new hammerjs(canvas as HTMLElement)
             heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-            heroCanvasGestures.on('panup pandown pan swipe', (e) => planetAnimation(e, camera, e.type))
+            heroCanvasGestures.on('panup pandown pan swipe', (e) => {
+                planetAnimation(e, camera, e.type)
+            })
             canvas.addEventListener('mousewheel', (e: WheelEvent) => {
                 if (e.deltaY > 0) {
                     setTimeout(() => {
