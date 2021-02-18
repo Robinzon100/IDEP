@@ -3,7 +3,8 @@ $f-weight-black: 900;
 $f-weight-bold: 700;
 $f-weight-regular: 600;
 $f-weight-medium: 500;
-$f-weight-light: 300;
+$f-weight-light: 400;
+$f-weight-lighter: 300;
 
 
 .f-weight-bl{
@@ -21,6 +22,12 @@ $f-weight-light: 300;
 .f-weight-m{
     font-weight: $f-weight-medium;
 }
+
 .f-weight-l{
     font-weight: $f-weight-light;
+}
+
+
+.f-weight-ler{
+    font-weight: $f-weight-lighter;
 }

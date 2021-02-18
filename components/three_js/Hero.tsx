@@ -37,6 +37,7 @@ const Hero: React.FC = () => {
 
 
     useEffect(() => {
+        console.log(navigator.userAgent.search('Firefox') > -1)
         init();
     }, [])
 
@@ -54,6 +55,7 @@ const Hero: React.FC = () => {
         const canvas = document.querySelector('.hero_canvas') as HTMLCanvasElement
         const container = document.querySelector('.hero_container')
         const videoTextureElement = document.querySelector('.texture_video')
+        navigator.userAgent.search("Firefox") > -1 && videoTextureElement.setAttribute('src', "/textures/videos/version3_compressed.mp4");
         const videoIntro = document.querySelector('.intro_video')
         const clock = new THREE.Clock()
         const scene = new Scene();
@@ -64,7 +66,6 @@ const Hero: React.FC = () => {
             y: 0
         }
 
-        navigator.userAgent.search("Firefox") > -1 || window.innerWidth < 600 && videoTextureElement.setAttribute('src', "/textures/videos/version3_compressed.mp4");
 
         window.addEventListener('mousemove', (e) => {
             // mousePosition.x = e.clientX / window.innerWidth - 0.5
@@ -135,17 +136,10 @@ const Hero: React.FC = () => {
 
         const heroCanvasGestures = new hammerjs(canvas as HTMLElement)
         heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-        heroCanvasGestures.on('panup pandown pan swipe', (e) => {
+        heroCanvasGestures.on('panup pandown pan swipe', (e: any) => {
             planetAnimation(e, camera, e.type)
         })
         canvas.addEventListener('wheel', (e: WheelEvent) => {
-            // if (e.deltaY > 0) {
-            //     setTimeout(() => {
-            //         bodyElement.style.overflow = 'auto'
-            //     }, 1000);
-            // } else {
-            //     bodyElement.style.overflow = 'hidden'
-            // }
             planetAnimation(e, camera)
         })
         // })

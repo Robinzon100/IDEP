@@ -39,6 +39,7 @@
           position: absolute;
           filter: blur(120px);
           overflow-x: hidden;
+          z-index: -1;
 
           & * {
               width: calc(5rem + 20vw);
