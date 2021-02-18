@@ -50,8 +50,8 @@ const Hero: React.FC = () => {
 
     function init() {
         const bodyElement = document.querySelector<HTMLBodyElement>('body')
-        bodyElement.style.position = 'fixed'
-        const canvas = document.querySelector('.hero_canvas')
+        bodyElement.style.overflow = 'hidden'
+        const canvas = document.querySelector('.hero_canvas') as HTMLCanvasElement
         const container = document.querySelector('.hero_container')
         const videoTextureElement = document.querySelector('.texture_video')
         const videoIntro = document.querySelector('.intro_video')
@@ -128,29 +128,27 @@ const Hero: React.FC = () => {
 
 
         // ─── EVENTS ────────────────────────────────────────────────────
-        videoIntro.addEventListener('ended', ({ currentTarget }) => {
-            fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
+        // videoIntro.addEventListener('ended', ({ currentTarget }) => {
+        fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
 
 
 
-            const heroCanvasGestures = new hammerjs(canvas as HTMLElement)
-            heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
-            heroCanvasGestures.on('panup pandown pan swipe', (e) => {
-                planetAnimation(e, camera, e.type)
-            })
-            canvas.addEventListener('mousewheel', (e: WheelEvent) => {
-                if (e.deltaY > 0) {
-                    setTimeout(() => {
-                        bodyElement.style.position = 'initial'
-                    }, 1000);
-                } else {
-                    setTimeout(() => {
-                        bodyElement.style.position = 'fixed'
-                    }, 500);
-                }
-                planetAnimation(e, camera)
-            })
+        const heroCanvasGestures = new hammerjs(canvas as HTMLElement)
+        heroCanvasGestures.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL });
+        heroCanvasGestures.on('panup pandown pan swipe', (e) => {
+            planetAnimation(e, camera, e.type)
         })
+        canvas.addEventListener('wheel', (e: WheelEvent) => {
+            // if (e.deltaY > 0) {
+            //     setTimeout(() => {
+            //         bodyElement.style.overflow = 'auto'
+            //     }, 1000);
+            // } else {
+            //     bodyElement.style.overflow = 'hidden'
+            // }
+            planetAnimation(e, camera)
+        })
+        // })
 
 
 
@@ -183,6 +181,7 @@ const Hero: React.FC = () => {
         scene.add(ring)
         renderer.setClearColor(0xffffff, 0)
         canvas.appendChild(renderer.domElement);
+        window.scrollTo(0, 0)
         animate()
     }
 
@@ -197,7 +196,7 @@ const Hero: React.FC = () => {
                 <div className="hero_canvas" />
 
                 <video className='texture_video' playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3_higher_resolution.mp4" />
-                <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" />
+                {/* <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" /> */}
 
 
                 <div className="content">

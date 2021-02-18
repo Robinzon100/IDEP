@@ -1,22 +1,36 @@
 import gsap from 'gsap';
 
-export const planetAnimation = (e, camera, direction?) => {
-    let scrollConditional = e.deltaY == 100 || direction == 'panup'
+export const planetAnimation = (e: WheelEvent, camera, direction?) => {
+    if (window.pageYOffset > 0) {
+        return
+    }
+    if (window.pageYOffset == 0) {
+        document.querySelector('body').style.overflow = 'hidden'
+    }
+    let scrolledDown = e.deltaY > 0 && window.pageYOffset == 0 || direction == 'panup' && window.pageYOffset == 0
+
+
     gsap.to(camera.position, {
         duration: 4,
-        z: scrollConditional ? 4 : .8,
-        y: scrollConditional ? 0.9 : 0,
+        z: scrolledDown ? 4 : .8,
+        y: scrolledDown ? 0.9 : 0,
         ease: "Expo.easeOut"
     })
 
     gsap.to('.title', {
         duration: 1.2,
-        y: scrollConditional ? -200 : 0,
-        opacity: scrollConditional ? 0 : 1,
+        y: scrolledDown ? -200 : 0,
+        opacity: scrolledDown ? 0 : 1,
         ease: "Expo.easeOut",
     })
 
-    if (scrollConditional) {
+    gsap.to('body', {
+        delay: 1,
+        overflow: e.deltaY > 0 && 'auto'
+    })
+
+
+    if (scrolledDown) {
         fadeInTransformUp(['.main_header', '.hero_button', '.navigation'], 'in')
     } else {
         fadeInTransformUp(['.main_header', '.hero_button', '.navigation'], 'out')
