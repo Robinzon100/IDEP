@@ -219,7 +219,7 @@ const Hero: React.FC = () => {
 
                 <div className="description_box">
                     <div className="image" />
-                    <p className="description f-size-p2 f-weight-m">IDEP is a next generation deStorage blockchain infrastructure, providing a series of tools and protocols for a truly decentralized data market.</p>
+                    <p className="description f-size-p2 f-weight-l">IDEP will introduce standards and tools that will enable a new economy based on blockchain powered data and digital media.</p>
                 </div>
 
             </section>
