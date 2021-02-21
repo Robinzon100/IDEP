@@ -42,7 +42,7 @@ body {
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     box-sizing: border-box;
-    font-family: "Inter";
+    font-family: "Inter" !important;
     color: var(--black);
 
     -ms-overflow-style: none;
