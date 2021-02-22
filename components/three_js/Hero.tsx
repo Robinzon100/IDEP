@@ -189,7 +189,7 @@ const Hero: React.FC = () => {
             <section className="hero_container" onMouseMove={e => dissableBlurOnElement(e, '.main_header')}>
                 <div className="hero_canvas" />
 
-                <video className='texture_video' playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3_higher_resolution.mp4" />
+                <video className='texture_video' playsInline muted loop autoPlay width="320" height="240" src="/textures/videos/version3_compressed.mp4" />
                 {/* <video className='intro_video' muted autoPlay src="/videos/intro/hero_high_resolution.mp4" /> */}
 
 
@@ -206,7 +206,7 @@ const Hero: React.FC = () => {
                         size={6}
                         ctaMode={true}
                         style={{ zIndex: 10 }}>
-                        <p className="f-size-h5 f-weight-r">get started</p>
+                        <p className="f-size-h5 f-weight-m">get started</p>
                     </Button>
                 </div>
 
