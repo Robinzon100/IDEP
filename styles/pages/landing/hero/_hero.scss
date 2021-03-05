@@ -124,7 +124,7 @@
               margin-top: 6.5vw;
               width: fit-content;
 
-              @media screen and (max-width: 1000px) {
+              @media screen and (max-width: $medium) {
                   margin-top: 10vw;
               }
           }
@@ -145,7 +145,7 @@
           width: 40rem;
           margin: 17.5vw auto;
 
-          @media screen and (max-width: 700px) {
+          @media screen and (max-width: $extra_small) {
               width: 90%;
               grid-template-columns: 1fr;
               grid-template-rows: 1fr;
@@ -153,8 +153,8 @@
               justify-items: center;
               margin-top: 40vh;
 
-              .description{
-                  text-align: center;
+              .description {
+                  text-align: left;
               }
           }
 
@@ -181,9 +181,10 @@
 
 
 
-  @media screen and (max-width: 1000px) {
-
-      .main_header {
-          filter: none !important;
+  @media screen and (max-width: $medium) {
+      .hero_container {
+          .main_header {
+              filter: none !important;
+          }
       }
   }

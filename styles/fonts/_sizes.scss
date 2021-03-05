@@ -1,14 +1,14 @@
 // ====================== IN VARIABLES
 $f-size-h1: calc(35px + (85 - 35) * ((100vw - 300px) / (1900 - 700))) !important;
 $f-size-h2: calc(30px + (75 - 30) * ((100vw - 300px) / (1900 - 700))) !important;
-$f-size-h3: calc(32px + (65 - 32) * ((100vw - 300px) / (1900 - 700))) !important;
-$f-size-h4: calc(28px + (45 - 28) * ((100vw - 300px) / (1900 - 700))) !important;
-$f-size-h5: calc(28px + (32 - 28) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h3: calc(26px + (58 - 26) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h4: calc(24px + (45 - 24) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h5: calc(22px + (32 - 22) * ((100vw - 300px) / (1900 - 700))) !important;
 
 
-$f-size-p1: calc(20px + (24.4 - 20) * ((100vw - 300px) / (1900 - 700))) !important;
-$f-size-p2: calc(18px + (22.4 - 18) * ((100vw - 300px) / (1900 - 700))) !important;
-$f-size-p3: calc(16px + (20.4 - 16) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-p1: calc(17px + (24.4 - 17) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-p2: calc(16px + (22.4 - 16) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-p3: calc(15px + (20.4 - 15) * ((100vw - 300px) / (1900 - 700))) !important;
 $f-size-p4: calc(14px + (18.4 - 14) * ((100vw - 300px) / (1900 - 700))) !important;
 
 
@@ -21,7 +21,7 @@ $f-size-p4: calc(14px + (18.4 - 14) * ((100vw - 300px) / (1900 - 700))) !importa
 
 .f-size-p2 {
     font-size: $f-size-p2;
-    line-height: 143.7%;
+    line-height: 157.7%;
 }
 
 .f-size-p3 {
@@ -50,7 +50,7 @@ $f-size-p4: calc(14px + (18.4 - 14) * ((100vw - 300px) / (1900 - 700))) !importa
 
 .f-size-h3 {
     font-size: $f-size-h3;
-    line-height: 94.5%;
+    line-height: 110.5%;
 }
 
 .f-size-h4 {

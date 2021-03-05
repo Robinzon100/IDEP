@@ -7,6 +7,16 @@
       "dom.iterable",
       "esnext"
     ],
+    "noImplicitAny": true,
+    // "strictNullChecks": true,
+    // "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -22,8 +32,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "next.config.js"  ],
+    "**/*.tsx",
+    "next.config.js"
+  ],
   "exclude": [
     "node_modules"
   ]

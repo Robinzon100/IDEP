@@ -37,6 +37,12 @@ html {
     font-weight: 400;
 }
 
+#paralaxImage{
+    background-size: 110%;
+    background-position-y: -20%;
+}
+
+
 body {
     background-color: var(--bg);
     text-rendering: optimizeSpeed;

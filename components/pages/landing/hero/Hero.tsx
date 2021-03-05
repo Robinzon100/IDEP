@@ -7,7 +7,8 @@ import { vertex } from './shaders/vertexShader';
 import gsap from "gsap";
 import hammerjs from "hammerjs";
 import { planetAnimation, fadeOutFadeIn, dissableBlurOnElement } from './utils/animations/hero.animations';
-import Button from '../lib/button/Button';
+import Button from 'components/lib/button/Button';
+import { fixScrollToTop } from 'components/utils/animations/gsap.animations';
 
 
 
@@ -139,7 +140,8 @@ const Hero: React.FC = () => {
         heroCanvasGestures.on('panup pandown pan swipe', (e: any) => {
             planetAnimation(e, camera, e.type)
         })
-        canvas.addEventListener('wheel', (e: WheelEvent) => {
+        canvas.addEventListener('mousewheel', (e: WheelEvent) => {
+            // console.log(e)
             planetAnimation(e, camera)
         })
         // })
@@ -175,7 +177,7 @@ const Hero: React.FC = () => {
         scene.add(ring)
         renderer.setClearColor(0xffffff, 0)
         canvas.appendChild(renderer.domElement);
-        window.scrollTo(0, 0)
+        fixScrollToTop(1) 
         animate()
     }
 

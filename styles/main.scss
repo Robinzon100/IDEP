@@ -1,5 +1,5 @@
-
 @import 'abstracts/color.variables';
+@import 'abstracts/screens.variables';
 
 @import 'fonts/faces';
 @import 'fonts/sizes';
@@ -12,4 +12,5 @@
 
 @import 'util/hover';
 
-@import 'pages/landing/hero/hero'
+@import 'pages/landing/hero/hero';
+@import 'pages/landing/blockchain/blockchain'
