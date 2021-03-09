@@ -1,31 +1,34 @@
-import { CSSProperties, FC, MouseEventHandler } from 'react';
+import { CSSProperties, MouseEventHandler, ReactNode } from 'react';
 
 
-interface props {
+interface buttonProps {
     size: number,
-    textColor?: string;
+    color?: string,
+    textColor?: string,
     className?: string,
     id?: string,
     disabled?: boolean,
     ctaMode?: boolean,
-    style?: CSSProperties
+    children?: ReactNode,
+    style?: CSSProperties,
     onClick?: MouseEventHandler<HTMLButtonElement>,
-    onHover?: MouseEventHandler<HTMLButtonElement>
+    onHover?: MouseEventHandler<HTMLButtonElement>,
 }
 
 
 
-const Button: FC<props> = ({
+const Button = ({
     size = 1,
-    textColor = 'var(--black)',
-    className,
-    id,
+    color = 'black',
+    textColor = 'white',
+    className = '',
+    id = '',
     disabled = false,
     ctaMode = false,
     children,
     style,
-    onClick,
-    onHover }) => {
+    onClick = () => console.log('clicked'),
+    onHover }: buttonProps) => {
 
 
 
@@ -34,8 +37,9 @@ const Button: FC<props> = ({
             <button
                 className={`button ${className}`}
                 id={`${id}`}
-                onClick={(e) => !disabled && onClick(e)}
+                onClick={(e) => onClick(e)}
                 onMouseOver={onHover}
+                disabled={!onClick && disabled}
                 style={style}>
                 <div className={`button_container ${ctaMode && 'cta_mode'}`}>
                     {children}
@@ -50,7 +54,8 @@ const Button: FC<props> = ({
                 }
             
                 .button{
-                   color: ${textColor}; 
+                    width: fit-content;
+                    color: ${textColor}; 
                     background: transparent;
                     border: none;
                     padding: 0;
@@ -64,18 +69,19 @@ const Button: FC<props> = ({
                 .button_container{
                     pointer-events: ${disabled && 'none'};
                     cursor: ${disabled ? 'not-allowed' : 'pointer'};
-                    padding: calc(${size} * .38vw) calc(${size} * 1.1vw);
-                    border-radius: calc(${size} * .28vw);
-                    border: 1px solid #ffffff00;
+                    padding: calc(${size} * .44vw) calc(${size} * .9vw);
+                    border-radius: ${~~size * 6}px;
+                    ${color == 'white' ? `
+                        box-shadow: 0px 30px 19px -22px rgba(0, 0, 0, 0.1), inset 0px 0px 14px #FFFFFF;
+                        backdrop-filter: blur(28px);
+                        background: linear-gradient(0deg, #DEDEDE -26.01%, rgba(255, 255, 255, 0) 60.87%), linear-gradient(180deg, #FFFFFF 1.54%, rgba(255, 255, 255, 0) 81.22%), rgba(227, 227, 227, 0.22);
+                    `:
+                    `background-color: var(--${color});`}
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                     justify-content: center;
-                    background: linear-gradient(0deg, #DEDEDE -26.01%, rgba(255, 255, 255, 0) 60.87%), linear-gradient(180deg, #FFFFFF 1.54%, rgba(255, 255, 255, 0) 81.22%), rgba(227, 227, 227, 0.22);
-                    border: 1px solid #F0F0F0;
                     box-sizing: border-box;
-                    box-shadow: 0px 30px 19px -22px rgba(0, 0, 0, 0.1), inset 0px 0px 14px #FFFFFF;
-                    backdrop-filter: blur(28px);
                     transition: all .2s ease;
                     user-select: none;
                 }
@@ -84,15 +90,21 @@ const Button: FC<props> = ({
 
                 .button:focus { outline: none; }
                 .button:hover .button_container{
-                    backdrop-filter: blur(14px);
-                    filter: saturation(20px);
                     transform: translateY(-3%);
-                    box-shadow: 0px 45px 50px -10px rgba(0, 0, 0, .28), inset 0px 0px 14px #FFFFFF !important;
+                    ${color == 'white' && `
+                        backdrop-filter: blur(14px);
+                        filter: saturation(20px);
+                        box-shadow: 0px 45px 50px -10px rgba(0, 0, 0, .28), inset 0px 0px 14px #FFFFFF !important;
+                    `}
                 }
 
                 .button:active .button_container{
                     transform: translateY(0%) !important;
-                    box-shadow: 0px 18px 25px -10px rgba(0, 0, 0, .35), inset 0px 0px 14px #FFFFFF !important;
+                    ${color == 'white' ? ` 
+                        box-shadow: 0px 18px 25px -10px rgba(0, 0, 0, .35), inset 0px 0px 14px #FFFFFF !important;
+                    `: `
+                        box-shadow: 0px 18px 25px -10px rgba(0, 0, 0, .35) !important;
+                    `}
                 }
 
 
@@ -105,12 +117,12 @@ const Button: FC<props> = ({
 
                 @media screen and (max-width: 1000px) {
                     .button_container {
-                        border-radius: calc(${size} * .28vw);
-                        padding: calc(${size} * .8vw) calc(${size} * 2vw);
+                        border-radius: ${~~size * 3.8}px;
+                        padding: calc(${size} * 1.7vw) calc(${size} * 2vw);
                     }
                 }
-                
-            
+
+
             `}</style>
         </>
     )

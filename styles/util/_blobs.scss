@@ -1,0 +1,23 @@
+.blob_purple,
+.blob_red,
+.blob_orange,
+.blob_cyan {
+    filter: blur(110px)
+}
+
+
+.blob_purple {
+    background-color: var(--purple);
+}
+
+.blob_red {
+    background-color: var(--red);
+}
+
+.blob_orange {
+    background-color: var(--orange);
+}
+
+.blob_cyan {
+    background-color: var(--cyan);
+}

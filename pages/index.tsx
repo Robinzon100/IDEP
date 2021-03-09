@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import { useEffect } from 'react';
 import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger)
@@ -5,10 +6,13 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 
 
 // ─── OWN IMPORT ─────────────────────────────────────────────────────────────────
-import dynamic from 'next/dynamic'
 import Navigation from 'components/global/navigation/Navigation';
-import Blockchain from '../components/pages/landing/blockchain/Blockchain';
-const Hero = dynamic(() => import('../components/pages/landing/hero/Hero'), { ssr: false })
+import Blockchain from 'components/pages/landing/blockchain/Blockchain';
+import Media from 'components/pages/landing/media/Media';
+import Newsletter from 'components/pages/landing/newsletter/Newsletter';
+// import Swap from 'components/pages/landing/swap/Swap';
+const Hero = dynamic(() => import('components/pages/landing/hero/Hero'), { ssr: false })
+const Swap = dynamic(() => import('components/pages/landing/swap/Swap'), { ssr: false })
 
 
 
@@ -32,12 +36,18 @@ const Index = () => {
   }
 
 
+
+
+
   return (
     <>
       <Navigation />
       <main className='main'>
         <Hero />
         <Blockchain />
+        <Media />
+        <Newsletter />
+        <Swap />
       </main>
     </>
   )

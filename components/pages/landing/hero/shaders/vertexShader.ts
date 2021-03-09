@@ -1,4 +1,4 @@
-import glslify from 'glslify';
+const glslify = require('glslify');
 
 
 

@@ -185,6 +185,15 @@
       .hero_container {
           .main_header {
               filter: none !important;
+
+
+              .hero_button {
+                  .button {
+                      .button_container {
+                          padding: 2.5rem 6rem;
+                      }
+                  }
+              }
           }
       }
   }

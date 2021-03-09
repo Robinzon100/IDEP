@@ -1,5 +1,15 @@
 .blockchain_main {
     height: 100vh;
+    position: relative;
+
+    .blob_red{
+        width: 30vw;
+        height: 20vw;
+        position: absolute;
+        left: -17%;
+        bottom: -10%;
+    }
+
 
     .container {
         height: 100%;

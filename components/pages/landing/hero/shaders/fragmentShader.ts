@@ -1,7 +1,6 @@
-import glslify from 'glslify';
+const glslify = require('glslify');
 
-
-export const fragment = () =>{
+export const fragment = () => {
     return glslify`
         uniform sampler2D image;
         varying vec2 vUv;

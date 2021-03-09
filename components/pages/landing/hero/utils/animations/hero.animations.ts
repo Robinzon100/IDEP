@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 
-export const planetAnimation = (e: WheelEvent, camera, direction?) => {
+export const planetAnimation = (e: WheelEvent, camera: THREE.Camera, direction?: string) => {
     if (window.pageYOffset > 0) {
         return
     }

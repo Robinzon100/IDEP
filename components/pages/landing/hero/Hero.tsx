@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react'
 import * as THREE from "three"
 const { PerspectiveCamera, Scene, WebGLRenderer } = THREE
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { fragment } from './shaders/fragmentShader';
-import { vertex } from './shaders/vertexShader';
-import gsap from "gsap";
 import hammerjs from "hammerjs";
 import { planetAnimation, fadeOutFadeIn, dissableBlurOnElement } from './utils/animations/hero.animations';
 import Button from 'components/lib/button/Button';
@@ -17,25 +13,6 @@ import { fixScrollToTop } from 'components/utils/animations/gsap.animations';
 
 
 const Hero: React.FC = () => {
-    let uniforms = {
-        time: { type: "f", value: 1.0 },
-        image: { type: 't', value: new THREE.TextureLoader().load('/logo.png') },
-        resolution: { type: "v4", value: new THREE.Vector4() }
-    };
-    let material = new THREE.ShaderMaterial({
-        side: THREE.DoubleSide,
-        uniforms: uniforms,
-        transparent: true,
-        vertexShader: vertex(),
-        fragmentShader: fragment()
-    });
-
-
-
-
-
-
-
 
     useEffect(() => {
         console.log(navigator.userAgent.search('Firefox') > -1)
@@ -54,24 +31,16 @@ const Hero: React.FC = () => {
         const bodyElement = document.querySelector<HTMLBodyElement>('body')
         bodyElement.style.overflow = 'hidden'
         const canvas = document.querySelector('.hero_canvas') as HTMLCanvasElement
-        const container = document.querySelector('.hero_container')
         const videoTextureElement = document.querySelector('.texture_video')
         navigator.userAgent.search("Firefox") > -1 && videoTextureElement.setAttribute('src', "/textures/videos/version3_compressed.mp4");
-        const videoIntro = document.querySelector('.intro_video')
-        const clock = new THREE.Clock()
         const scene = new Scene();
 
 
-        let mousePosition = {
-            x: 0,
-            y: 0
-        }
 
-
-        window.addEventListener('mousemove', (e) => {
-            // mousePosition.x = e.clientX / window.innerWidth - 0.5
-            // mousePosition.y = - (e.clientY / window.innerHeight - 0.5)
-        })
+        // window.addEventListener('mousemove', (e) => {
+        //     // mousePosition.x = e.clientX / window.innerWidth - 0.5
+        //     // mousePosition.y = - (e.clientY / window.innerHeight - 0.5)
+        // })
 
         // ─── CAMERA ──────────────────────────────────────────────────────
         const camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
@@ -160,11 +129,6 @@ const Hero: React.FC = () => {
 
 
         function animate() {
-            // camera.position.x = Math.sin(mousePosition.x * Math.PI * 2)  * 3
-            // camera.position.z = Math.cos(mousePosition.x * Math.PI * 2) * 3
-            // camera.position.y = mousePosition.y * 5
-            // camera.lookAt(phere.position)
-            // controls.update()
             videoMaterial.needsUpdate = true
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
@@ -206,6 +170,8 @@ const Hero: React.FC = () => {
                             buttonAudio.play()
                         }}
                         size={6}
+                        color='white'
+                        textColor='black'
                         ctaMode={true}
                         style={{ zIndex: 10 }}>
                         <p className="f-size-h5 f-weight-m">get started</p>
