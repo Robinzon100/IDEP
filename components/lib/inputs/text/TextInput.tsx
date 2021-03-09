@@ -1,21 +1,28 @@
-import { ChangeEvent, CSSProperties } from 'react';
+import { ChangeEventHandler, CSSProperties } from 'react';
 
 interface props {
     size: number,
     className?: string,
     id?: string,
-    dissabled?: string,
+    dissabled?: boolean,
     style?: CSSProperties,
-    onChange?: ChangeEvent,
-    
+    onChange?: ChangeEventHandler,
 }
 
 
 
-const TextInput = () => {
+const TextInput = ({ size, className, id, dissabled, style, onChange }: props) => {
     return (
         <>
-            <input type="text" name="" id=""/> 
+            <input 
+            data-size={size} 
+            style={style} 
+            onChange={onChange} 
+            className={className} 
+            id={id} 
+            disabled={dissabled} 
+            type="text" 
+            name="" />
         </>
     )
 }
