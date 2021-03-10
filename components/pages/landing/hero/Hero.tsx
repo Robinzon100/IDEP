@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import * as THREE from "three"
 const { PerspectiveCamera, Scene, WebGLRenderer } = THREE
-import hammerjs from "hammerjs";
-import { planetAnimation, fadeOutFadeIn, dissableBlurOnElement } from './utils/animations/hero.animations';
+import { fadeOutFadeIn, dissableBlurOnElement } from './utils/animations/hero.animations';
 import Button from 'components/lib/button/Button';
 import { fixScrollToTop } from 'components/utils/animations/gsap.animations';
 import { FC } from 'react';
