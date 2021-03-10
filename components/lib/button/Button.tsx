@@ -118,7 +118,7 @@ const Button = ({
                 @media screen and (max-width: 1000px) {
                     .button_container {
                         border-radius: ${~~size * 3.8}px;
-                        padding: calc(${size} * 1.7vw) calc(${size} * 2vw);
+                        padding: calc(${size} * 1.3vw) calc(${size} * 2vw);
                     }
                 }
 

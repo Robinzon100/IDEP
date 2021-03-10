@@ -51,13 +51,13 @@ body {
     font-family: Inter;
     color: var(--black);
 
-    // -ms-overflow-style: none;
-    // scrollbar-width: none;
-    // overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
 
-    // &::-webkit-scrollbar {
-    //     width: 0 !important
-    // }
+    &::-webkit-scrollbar {
+        width: 0 !important
+    }
 
 }
 
