@@ -10,9 +10,9 @@ import Navigation from 'components/global/navigation/Navigation';
 import Blockchain from 'components/pages/landing/blockchain/Blockchain';
 import Media from 'components/pages/landing/media/Media';
 import Newsletter from 'components/pages/landing/newsletter/Newsletter';
-import Swap from 'components/pages/landing/swap/Swap';
+// import Swap from 'components/pages/landing/swap/Swap';
 const Hero = dynamic(() => import('components/pages/landing/hero/Hero'), { ssr: false })
-// const Swap = dynamic(() => import('components/pages/landing/swap/Swap'), { ssr: false })
+const Swap = dynamic(() => import('components/pages/landing/swap/Swap'), { ssr: false })
 
 
 
@@ -47,7 +47,7 @@ const Index = () => {
         <Blockchain />
         <Media />
         <Newsletter />
-        <div style={{ height: '150vh' }}/>
+        <div style={{ height: '150vh' }} />
         <Swap />
       </main>
     </>

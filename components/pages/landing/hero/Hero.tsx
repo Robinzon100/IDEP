@@ -102,7 +102,7 @@ const Hero: FC = () => {
 
         // ─── EVENTS ────────────────────────────────────────────────────
         // videoIntro.addEventListener('ended', ({ currentTarget }) => {
-        fadeOutFadeIn('.intro_video', ['.hero_canvas', '.title'])
+        fadeOutFadeIn('.intro_video', ['.hero_canvas', '.hero_title'])
 
         let tl = gsap.timeline({
             scrollTrigger: {
@@ -120,13 +120,13 @@ const Hero: FC = () => {
             y: 0.9,
             ease: "Expo.easeOut"
         })
-        tl.to('.title', {
+        tl.to('.hero_title', {
             duration: 1,
             y: 0,
             opacity: 1,
             ease: "Expo.easeOut",
         })
-        tl.to('.title', {
+        tl.to('.hero_title', {
             y: 80,
             opacity: 0,
             ease: "Expo.easeOut",
@@ -193,7 +193,7 @@ const Hero: FC = () => {
 
 
                 <div className="content">
-                    <h1 className='f-size-h1 title'>IDEP</h1>
+                    <h1 className='f-size-h1 hero_title'>IDEP</h1>
                     <h1 className='f-size-h1 main_header'>Intergalactic <span className='colored_word'> Data </span><br /> Exchange Protocol</h1>
                     <Button
                         className='hero_button'

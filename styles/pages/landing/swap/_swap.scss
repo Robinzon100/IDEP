@@ -1,9 +1,9 @@
 .swap_main {
     margin-top: 10vw;
     margin-bottom: 30vh;
-    
 
-    .container {
+
+    .swap_container {
         width: 100vw;
         height: 100vh;
 
@@ -11,16 +11,98 @@
         #swap_canvas {
             width: 100%;
             height: 100%;
+            z-index: -1;
+        }
+    }
+
+    .content_container {
+        max-width: 58rem;
+        width: 85%;
+        margin: 30vw auto 0 auto;
+        position: relative;
+        z-index: 3;
+
+
+
+        @media screen and (max-width: $medium) {
+            margin: 120vw auto 0 auto;
         }
 
-        svg {
-            width: 100vw;
-            height: 100vh;
+        h1 {
+            text-align: center;
+            background: conic-gradient(from 133.61deg at 47.54% 48.81%, #00D1EA 0deg, #F868EC 176.25deg, #F98C2A 331.88deg, #00D1EA 360deg);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: calc(3.5vw + 3.5rem);
+
         }
 
-        canvas {
-            // width: 100vw;
-            // height: 100vh;
+        .features {
+
+            .feature {
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                margin-bottom: 9vw;
+                gap: 0 4vw;
+                align-items: center;
+
+
+
+                .image_container {
+                    max-width: 190px;
+                    max-height: 190px;
+                    width: 20vw;
+                    height: 20vw;
+                    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.11), 0px 33px 61px rgba(10, 9, 9, 0.13), inset 0px -14px 26px -13px rgba(0, 0, 0, 0.21);
+                    border-radius: 75px;
+
+                    background: {
+                        color: white;
+                        position: center;
+                        size: 55%;
+                        repeat: no-repeat;
+                    }
+
+                    ;
+
+
+                    @media screen and (max-width: $medium) {
+                        border-radius: calc(3vw + 1.2rem);
+                    }
+
+                }
+
+                .image_container:nth-child(2) {
+                    background-color: red !important;
+                }
+
+
+                .content {
+                    h2 {
+                        margin-bottom: 2vw;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: $extra_small) {
+    .swap_main {
+        .features {
+            .feature {
+                margin-bottom: 16vw !important;
+                grid-template-columns: 1fr !important;
+                gap: 6vw 4vw !important;
+                align-items: center;
+
+                .image_container{
+                    height: 25vw !important;
+                    width: 25vw !important;
+                }
+            }
         }
     }
 }

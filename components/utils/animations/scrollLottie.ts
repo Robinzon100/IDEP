@@ -7,7 +7,7 @@ interface scrollLottieType {
     target: string,
     path: string,
     duration: number,
-    speed: string
+    speed?: string
 }
 
 export const scrollLottie = (obj: scrollLottieType) => {
@@ -18,12 +18,12 @@ export const scrollLottie = (obj: scrollLottieType) => {
         autoplay: false,
         path: obj.path,
         rendererSettings: {
-            filterSize: {
-                width: "100%",
-                height: "100%",
-                x: '10%',
-                y: '-50%'
-            },
+            // filterSize: {
+            //     width: "100%",
+            //     height: "100%",
+            //     x: '10%',
+            //     y: '-150%'
+            // },
             clearCanvas: true,
             progressiveLoad: true,
             hideOnTransparent: false,
@@ -31,7 +31,7 @@ export const scrollLottie = (obj: scrollLottieType) => {
         }
     });
 
-    document.querySelector(obj.target).getBoundingClientRect().height = 1080
+    // document.querySelector(obj.target).getBoundingClientRect().height = 1080
 
 
 

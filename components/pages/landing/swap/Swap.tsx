@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { scrollLottie } from "components/utils/animations/scrollLottie";
 // import Lottie from 'lottie-web';
+import { content } from './swap.content';
 
 const Swap = () => {
+
 
     useEffect(() => {
         init()
@@ -10,48 +12,37 @@ const Swap = () => {
 
 
     const init = () => {
-        scrollLottie({  
+        scrollLottie({
             target: '#swap_canvas',
             path: 'animations/galaxy.json',
-            duration: 1.4,
+            duration: 0.2,
             speed: 'slow'
         })
-
-        // let anim = Lottie.loadAnimation({
-        //     container: document.querySelector('#swap_canvas'),
-        //     renderer: 'canvas',
-        //     loop: false,
-        //     autoplay: false,
-        //     path:'animations/galaxy.json',
-        // }).play()
-        // let animation = Lottie.loadAnimation({
-        //     container: document.querySelector('#swap_canvas'),
-        //     renderer: 'canvas',
-        //     loop: true,
-        //     animationData: require('../../../../public/animations/galaxy.json'),
-        //     // path: 'https://assets9.lottiefiles.com/packages/lf20_1yqc9qdg.json',
-        //     rendererSettings: {
-        //         clearCanvas: true,
-        //         progressiveLoad: true,
-        //         hideOnTransparent: false,
-        //         preserveAspectRatio: 'xMaxYMin slice'
-        //     }
-        // });
-
-        // animation.play()
-
-        // window.addEventListener('resize', () => {
-        //     if (window.innerWidth > 950) {
-        //         animation.resize()
-        //     }
-        // })
     }
 
     return (
         <>
             <div className="swap_main">
-                <div className="container">
+                <div className="swap_container">
                     <div className="animation" id="swap_canvas" />
+                </div>
+
+                <div className="content_container">
+                    <h1 className="f-size-h1 f-weight-bl">IDEP SWAP</h1>
+                    <div className="features">
+                        {content.map((feature, i) => (
+                            <div key={i} className="feature">
+                                <div className="image_container" style={{
+                                    backgroundImage: `url("images/swap_icon/${feature.imageUrl}")`,
+                                    backgroundSize: ` ${i == 1 || i == 4 ? '100%' : '55%'}`
+                                }} />
+                                <div className="content">
+                                    <h2 className="f-size-h4 f-weight-bo feature_title">{feature.title}</h2>
+                                    <p className="f-size-p2 f-weight-m feature_description">{feature.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </>
