@@ -1,0 +1,82 @@
+.identt_main {
+
+
+
+
+    .identt_video {
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: auto;
+        background-size: cover;
+    }
+
+
+
+    .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto 0 2vw;
+
+        @media screen and (max-width: $medium) {
+            flex-direction: column;
+            margin: 0 auto !important;
+
+            .image {
+                width: 100vw !important;
+                margin-bottom: 3vw;
+                background-size: 90% !important;
+            }
+
+            .content {
+                margin: -10vw auto 0 auto;
+                font-size: $f-size-h1;
+            }
+
+        }
+
+        .image {
+            height: 100%;
+            width: 50%;
+
+            background: {
+                image: url('/images/png/logo_mark.svg');
+                size: cover;
+                position: center;
+                repeat: no-repeat;
+            }
+
+            ;
+        }
+
+
+        .content {
+            align-self: center;
+            max-width: 30rem;
+            width: 87%;
+            margin-left: 4vw;
+
+            @media screen and (max-width: $medium) {
+                margin-bottom: 10vw;
+                margin-left: 7vw !important;
+            }
+
+            span {
+                background: linear-gradient(134.74deg, #00D1EA 9.43%, #F868EC 47.36%, #F98C2A 80.86%);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+
+    .identt_content {
+        max-width: 40rem;
+        width: 86%;
+        margin: 0 auto;
+
+        p {
+            margin-bottom: 6vw;
+        }
+    }
+}

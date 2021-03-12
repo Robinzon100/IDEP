@@ -1,0 +1,73 @@
+.uptake_main {
+    margin-top: 30vw;
+
+    .container {
+        margin-left: 8vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 10vw;
+
+        .content {
+            justify-self: center;
+
+
+            * {
+                margin-bottom: 5vw;
+            }
+
+            .description {
+                margin-bottom: 5vw;
+                padding-bottom: 5vw;
+                border-bottom: 2px solid rgba(128, 128, 128, 0.165);
+            }
+        }
+
+        .image {
+            height: 60vw;
+            width: 50vw;
+            border-radius: 999px 999px 0 0;
+
+
+            background: {
+                image: url('/images/uptake/uptake.png');
+                color: white;
+                position: center;
+                size: cover;
+                repeat: no-repeat;
+            }
+
+            ;
+
+
+        }
+    }
+}
+
+
+
+@media screen and (max-width: $medium) {
+    .uptake_main {
+
+        .container {
+            display: flex !important;
+            flex-direction: column-reverse;
+            margin-left: 0 !important;
+
+            .image {
+                margin-bottom: 10vw;
+                width: 100vw !important;
+                border-radius: initial !important;
+            }
+
+
+            .content {
+                margin: 0 auto;
+                width: 86%;
+
+
+
+                .description {}
+            }
+        }
+    }
+}

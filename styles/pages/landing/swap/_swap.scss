@@ -1,6 +1,6 @@
 .swap_main {
     margin-top: 10vw;
-    margin-bottom: 30vh;
+    margin-bottom: 40vw;
 
 
     .swap_container {
@@ -34,6 +34,10 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: calc(3.5vw + 3.5rem);
+
+            @media screen and (max-width: $medium) {
+                font-size: 13vw !important;
+            }
 
         }
 
@@ -98,7 +102,7 @@
                 gap: 6vw 4vw !important;
                 align-items: center;
 
-                .image_container{
+                .image_container {
                     height: 25vw !important;
                     width: 25vw !important;
                 }
