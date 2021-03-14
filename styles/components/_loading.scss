@@ -1,0 +1,74 @@
+.loading_main {
+    position: fixed;
+    z-index: 999;
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .content {
+            max-width: 60rem;
+            width: 86%;
+            margin-bottom: -5vw;
+
+            .fact {
+                margin: 0 auto;
+                max-width: 44rem;
+                width: 100%;
+            }
+
+
+            .sphere_container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: calc(3rem + 5vw);
+
+
+                .sphere {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: calc(5vw + 7rem);
+                    height: calc(5vw + 7rem);
+                    border-radius: 300px;
+                    background: var(--white);
+                    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.04),
+                        31px 28px 72px rgba(0, 0, 0, 0.12);
+
+                    @media screen and (max-width: $medium) {
+                        width: calc(2vw + 4.5rem);
+                        height: calc(2vw + 4.5rem);
+                    }
+
+
+                    .gradient {
+                        width: 70%;
+                        height: 70%;
+                        border-radius: 300px;
+                    }
+
+                    .purple {
+                        background: radial-gradient(92.4% 92.4% at 21.17% 13.7%, #00D1EA 0%, #F868EC 48.96%, #F98C2A 92.19%);
+                    }
+
+                    .green {
+                        background: radial-gradient(68.55% 68.55% at 22.54% 20.42%, #00D1EA 0%, #56F97B 92.19%);
+                    }
+
+                    .red {
+                        background: linear-gradient(134.74deg, #F94D6C 9.43%, #F98C2A 80.86%);
+                    }
+
+                    .black {
+                        background: linear-gradient(135deg, #E8E9EF 15.83%, #0D0D0E 82.52%);
+                    }
+                }
+            }
+        }
+    }
+}

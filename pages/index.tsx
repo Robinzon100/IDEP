@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import { useEffect } from 'react';
 import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger)
@@ -12,8 +12,9 @@ import Media from 'components/pages/landing/media/Media';
 import Newsletter from 'components/pages/landing/newsletter/Newsletter';
 import Swap from 'components/pages/landing/swap/Swap';
 import Identt from 'components/pages/landing/identt/Identt';
-import Uptake from '../components/pages/landing/uptake/Uptake';
-const Hero = dynamic(() => import('components/pages/landing/hero/Hero'), { ssr: false })
+import Uptake from 'components/pages/landing/uptake/Uptake';
+import Hero from 'components/pages/landing/hero/Hero';
+// const Hero = dynamic(() => import('components/pages/landing/hero/Hero'), { ssr: false })
 // const Swap = dynamic(() => import('components/pages/landing/swap/Swap'), { ssr: false })
 
 
