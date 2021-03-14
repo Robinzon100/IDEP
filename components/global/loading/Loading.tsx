@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import gsap from 'gsap';
-
+import { fixScrollToTop } from 'components/utils/animations/gsap.animations';
+const tl = gsap.timeline()
 
 
 
@@ -21,7 +22,7 @@ const Loading = ({ isLoading }: { isLoading: boolean }) => {
     }, [isLoading])
 
     const init = () => {
-        const tl = gsap.timeline()
+        fixScrollToTop(7)
         tl.fromTo(".loading_main .fact", {
             yPercent: 100,
             clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
@@ -43,14 +44,20 @@ const Loading = ({ isLoading }: { isLoading: boolean }) => {
                 ease: "Bounce,easeOut",
             })
         })
-
+        
     }
 
     const removeLoadingScreen = () => {
-        gsap.fromTo('.loading_main', {
+        tl.fromTo('.loading_main', {
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%'
         }, {
             clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%'
+        })
+        tl.to('.hero_title', {
+            duration: 1,
+            y: 0,
+            opacity: 1,
+            ease: "Expo.easeOut",
         })
     }
 

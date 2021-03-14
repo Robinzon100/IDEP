@@ -87,6 +87,25 @@
           pointer-events: none;
           user-select: none;
           text-shadow: 0px 18px 50px #1213193b;
+          font-size: $f-size-h1;
+          mix-blend-mode: overlay;
+          
+          //   background: radial-gradient(58.73% 123.67% at 11.27% 16.78%, #F98C2A 0%, #F868EC 62.55%, #00E3F4 100%);
+          //   -webkit-background-clip: text;
+          //   -webkit-text-stroke: 5px transparent;
+          //   color: #232d2d;
+          //   -webkit-text-fill-color: white;
+          //   animation: hue 10s infinite linear;
+      }
+
+      @keyframes hue {
+          from {
+              -webkit-filter: hue-rotate(0deg);
+          }
+
+          to {
+              -webkit-filter: hue-rotate(-360deg);
+          }
       }
 
 

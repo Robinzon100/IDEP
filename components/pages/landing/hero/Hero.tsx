@@ -108,7 +108,7 @@ const Hero: FC = () => {
             scrollTrigger: {
                 trigger: '.hero_container',
                 start: 'top top',
-                scrub: 1,
+                scrub: .7,
                 pin: true
             }
         })
