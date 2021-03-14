@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { useState, useEffect } from 'react';
 
-
+//
 // ─── OWN IMPORTS ────────────────────────────────────────────────────────────────
 import '../styles/main.scss'
 import HeadAndMeta from 'components/global/head/HeadAndMeta';
@@ -16,16 +16,19 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 
   useEffect(() => {
-    window.addEventListener("load", function () {
-      setIsLoading(false)
-    });
+    // window.addEventListener("load", function () {
+      setTimeout(() => {
+        console.log('should load')
+        setIsLoading(false)
+      }, 8000);
+    // });
   }, [])
 
 
   return (
     <>
       <HeadAndMeta />
-      {isLoading && (<Loading />)}
+      <Loading isLoading={isLoading} />
       <Component {...pageProps} />
     </>
   )

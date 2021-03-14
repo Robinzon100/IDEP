@@ -5,13 +5,20 @@ import gsap from 'gsap';
 
 
 
-const Loading = () => {
+const Loading = ({ isLoading }: { isLoading: boolean }) => {
 
 
     useEffect(() => {
         init()
     }, [])
 
+
+    useEffect(() => {
+        console.log(`need loading ${isLoading}`)
+        if (!isLoading) {
+            removeLoadingScreen()
+        }
+    }, [isLoading])
 
     const init = () => {
         const tl = gsap.timeline()
@@ -32,36 +39,38 @@ const Loading = () => {
             }, {
                 yPercent: 0,
                 opacity: 1,
-                delay: i * .2,
+                delay: i * .15,
                 ease: "Bounce,easeOut",
             })
         })
 
-        tl.fromTo('.loading_main', {
+    }
+
+    const removeLoadingScreen = () => {
+        gsap.fromTo('.loading_main', {
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%'
-        },{
+        }, {
             clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%'
         })
     }
 
 
 
-
     return (
         <>
-                <section className="loading_main">
-                    <div className="container">
-                        <div className="content">
-                            <p className="fact f-size-h4 f-weight-bl">Intergalactic Data Exchange Protocol Intergalactic Data</p>
-                            <div className="sphere_container">
-                                <div className="sphere"><div className="gradient purple" /></div>
-                                <div className="sphere"><div className="gradient green" /></div>
-                                <div className="sphere"><div className="gradient red" /></div>
-                                <div className="sphere"><div className="gradient black" /></div>
-                            </div>
+            <section className="loading_main">
+                <div className="container">
+                    <div className="content">
+                        <p className="fact f-size-h4 f-weight-bl">Intergalactic Data Exchange Protocol Intergalactic Data</p>
+                        <div className="sphere_container">
+                            <div className="sphere"><div className="gradient purple" /></div>
+                            <div className="sphere"><div className="gradient green" /></div>
+                            <div className="sphere"><div className="gradient red" /></div>
+                            <div className="sphere"><div className="gradient black" /></div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
         </>
     )
 }
