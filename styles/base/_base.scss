@@ -37,7 +37,7 @@ html {
     font-weight: 400;
 }
 
-#paralaxImage{
+#paralaxImage {
     background-size: 110%;
     background-position-y: -20%;
 }
@@ -59,6 +59,14 @@ body {
         width: 0 !important
     }
 
+}
+
+b {
+
+    background: linear-gradient(134.74deg, #00D1EA 9.43%, #F868EC 47.36%, #F98C2A 80.86%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: $f-weight-black;
 }
 
 ul[class],

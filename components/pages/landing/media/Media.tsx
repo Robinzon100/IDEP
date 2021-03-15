@@ -33,7 +33,7 @@ const Media = () => {
         <>
             <div className="media_main">
                 <div className="container">
-                    <p className="description f-size-p1 f-weight-l">For the first time ever IDEP allows data and media owners to establish intellectual property rights on chain and monetize it.</p>
+                    <p className="description f-size-p2 f-weight-l">Through a series of innovative apps and standards, the Intergalactic Data Exchange Protocol enables developers to create anything the mind can imagine: from a website <b> selling NFTs </b> of unicorns to a <b> trustless Intellectual property </b> framework, and everything in between. All can be built through IDEP.</p>
                     <div className="video_container">
                         <p className="video_number f-size-h3 f-weight-bl">{videoIndex}</p>
                         <video muted autoPlay playsInline src="/videos/media/planet.mp4" />
@@ -41,10 +41,10 @@ const Media = () => {
                     </div>
                     <div className="buttons">
                         <div className="button" data-videoindex={1} onClick={(e) => handleVideoChange(e)} >
-                            <p className='video_title active f-size-h5 f-weight-l'>be the owner of your intellectual property.</p>
+                            <p className='video_title active f-size-h6 f-weight-l'>establish verifiable intellectual property rights.</p>
                         </div>
                         <div className="button" data-videoindex={2} onClick={(e) => handleVideoChange(e)} >
-                            <p className='video_title f-size-h5 f-weight-l'>make a profit by monetizing.</p>
+                            <p className='video_title f-size-h6 f-weight-l'>license and monetize your content trustlessly.</p>
                         </div>
                     </div>
                 </div>

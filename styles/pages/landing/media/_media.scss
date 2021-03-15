@@ -20,9 +20,11 @@
 
         .description {
             grid-area: description;
-            max-width: 40rem;
+            max-width: 62rem;
             margin: 0 0 4vw 0;
             user-select: text;
+
+           
         }
 
         .video_container {
@@ -128,7 +130,7 @@
                 "buttons buttons"
                 "description description";
 
-            
+
 
             .buttons {
                 margin-top: 1rem;

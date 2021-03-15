@@ -49,10 +49,10 @@ const Index = () => {
         <Hero />
         <Blockchain />
         <Media />
+        <Identt />
         <Uptake />
         {/* <div style={{ height: '130vh' }} /> */}
         <Swap />
-        <Identt />
         <Newsletter />
       </main>
     </>

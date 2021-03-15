@@ -11,8 +11,8 @@ const Identt = () => {
                     </h1>
                 </div>
                 <div className="identt_content">
-                    <p className="f-size-p4 f-weight-l">Blockchain profiles are a new form of digital ownership, these blockchain profiles are solely owned by the individual and organization, since they are essentially smart contracts they can hold crypto assets or nfts inside them.</p>
-                    <p className="f-size-p4 f-weight-l">The most important thing to understand is that they are decentralized and immutable. They can represent a person's digital identity on the blockchain. You can attach your social media links and picture to these profiles, and other organizations can verify ‘claims’ on this profile to give you credentials. It is built on the erc725 standard. </p>
+                    <p className="f-size-p4 f-weight-l">With digital decentralization and accessibility comes digital ownership of goods, media, and data. To identify who owns these digital goods, blockchain profiles were created to give an identity (IDENTT) to the owners of the goods.</p>
+                    <p className="f-size-p4 f-weight-l">Being owned by the individual or organization themselves, the control is in their hands, with no outside parties being able to shut them down or tinker with their profiles and assets, giving a new level of user control to digital goods.</p>
                 </div>
             </section>
         </>

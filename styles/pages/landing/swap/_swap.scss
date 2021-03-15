@@ -41,6 +41,15 @@
 
         }
 
+        .main_description {
+            margin: 0 auto 9rem auto;
+
+            @media screen and (max-width: $medium) {
+                margin: 0 auto 6rem auto !important;
+            }
+        }
+
+
         .features {
 
             .feature {

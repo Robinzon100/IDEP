@@ -4,6 +4,7 @@ $f-size-h2: calc(30px + (75 - 30) * ((100vw - 300px) / (1900 - 700))) !important
 $f-size-h3: calc(26px + (58 - 26) * ((100vw - 300px) / (1900 - 700))) !important;
 $f-size-h4: calc(24px + (45 - 24) * ((100vw - 300px) / (1900 - 700))) !important;
 $f-size-h5: calc(22px + (32 - 22) * ((100vw - 300px) / (1900 - 700))) !important;
+$f-size-h6: calc(20px + (27 - 20) * ((100vw - 300px) / (1900 - 700))) !important;
 
 
 $f-size-p1: calc(17px + (24.4 - 17) * ((100vw - 300px) / (1900 - 700))) !important;
@@ -61,5 +62,9 @@ $f-size-p4: calc(14px + (18.4 - 14) * ((100vw - 300px) / (1900 - 700))) !importa
 
 .f-size-h5 {
     font-size: $f-size-h5;
+    line-height: 120.5%;
+}
+.f-size-h6 {
+    font-size: $f-size-h6;
     line-height: 120.5%;
 }

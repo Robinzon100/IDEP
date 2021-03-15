@@ -44,7 +44,7 @@ const Loading = ({ isLoading }: { isLoading: boolean }) => {
                 ease: "Bounce,easeOut",
             })
         })
-        
+
     }
 
     const removeLoadingScreen = () => {
@@ -62,13 +62,24 @@ const Loading = ({ isLoading }: { isLoading: boolean }) => {
     }
 
 
+    const facts = [
+        'non-fungible tokens are not interchangeable.',
+        'Non-fungible tokens contain identifying information recorded in their smart contracts.',
+        'Thanks to NFTs, digital artists can safely sell their works.',
+        'there’s been over 4.9 million sales worth well over $128 million to-date.',
+        'Create your own pools with customizable assets and weights.'
+    ]
+
+
 
     return (
         <>
             <section className="loading_main">
                 <div className="container">
                     <div className="content">
-                        <p className="fact f-size-h4 f-weight-bl">Intergalactic Data Exchange Protocol Intergalactic Data</p>
+                        <p className="fact f-size-h4 f-weight-bl">
+                            {facts[~~(Math.random() * facts.length)]}
+                        </p>
                         <div className="sphere_container">
                             <div className="sphere"><div className="gradient purple" /></div>
                             <div className="sphere"><div className="gradient green" /></div>

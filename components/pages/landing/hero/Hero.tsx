@@ -220,7 +220,7 @@ const Hero: FC = () => {
 
                 <div className="description_box">
                     <div className="image" />
-                    <p className="description f-size-p2 f-weight-l">IDEP will introduce standards and tools that will enable a new economy based on blockchain powered data and digital media.</p>
+                    <p className="description f-size-p2 f-weight-l">IDEP is revolutionizing decentralized digital media by creating new standards and tools to enable a blockchain-based digital content economy.</p>
                 </div>
 
             </section>

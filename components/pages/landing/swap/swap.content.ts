@@ -12,7 +12,7 @@ export const content: { imageUrl: string, title: string, description: string }[]
    {
       imageUrl: 'pools.png',
       title: 'Smart Pools',
-      description: 'your arbitrary trading strategy or logic automatically.'
+      description: 'Your arbitrary trading strategy or logic automatically.'
    },
    {
       imageUrl: 'low.png',

@@ -27,10 +27,11 @@ const Swap = () => {
                     <div className="animation" id="swap_canvas" />
                 </div>
 
-                <div style={{ height: '130vh' }} />
+                <div style={{ height: '190vh' }} />
 
                 <div className="content_container">
                     <h1 className="f-size-h1 f-weight-bl">IDEP SWAP</h1>
+                    <p className='main_description f-size-p2 f-weight-l'>With the fusion of traditional digital content and blockchain technology, a new need arises for <b>trustless exchange</b> of content. The Marketplace for the openweb, IDEP SWAP allows anyone to launch their own blockchain powered market easily and integrate it into virtually any application unlocking a whole new level of liquid assets.</p>
                     <div className="features">
                         {content.map((feature, i) => (
                             <div key={i} className="feature">

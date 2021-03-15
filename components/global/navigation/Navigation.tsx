@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link'
 import { File, MessageSquare } from "react-feather";
 
@@ -7,12 +8,24 @@ import { File, MessageSquare } from "react-feather";
 
 
 const Navigation = () => {
+    const router = useRouter()
+
+    const logoClickHandler = () => {
+        if (router.pathname == '/') {
+            window.scrollTo(0, 1400)
+        }else{
+            router.push('/')
+        }
+    }
+
+
+
     return (
         <>
             <nav className='navigation'>
                 <div className="container">
 
-                    <div className="logo" />
+                    <div className="logo" onClick={() => logoClickHandler()} />
 
                     <div className="links_container">
                         <div className="link">
@@ -73,7 +86,7 @@ const Navigation = () => {
                     <stop offset="80%" stopColor="var(--orange)" />
                 </linearGradient>
             </svg>
- 
+
 
         </>
     )
