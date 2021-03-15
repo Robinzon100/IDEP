@@ -14,6 +14,7 @@ import Swap from 'components/pages/landing/swap/Swap';
 import Identt from 'components/pages/landing/identt/Identt';
 import Uptake from 'components/pages/landing/uptake/Uptake';
 import Hero from 'components/pages/landing/hero/Hero';
+import Software from 'components/pages/landing/software/Software';
 // const Hero = dynamic(() => import('components/pages/landing/hero/Hero'), { ssr: false })
 // const Swap = dynamic(() => import('components/pages/landing/swap/Swap'), { ssr: false })
 
@@ -53,6 +54,7 @@ const Index = () => {
         <Uptake />
         {/* <div style={{ height: '130vh' }} /> */}
         <Swap />
+        <Software />
         <Newsletter />
       </main>
     </>

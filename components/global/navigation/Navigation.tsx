@@ -12,7 +12,8 @@ const Navigation = () => {
 
     const logoClickHandler = () => {
         if (router.pathname == '/') {
-            window.scrollTo(0, 1400)
+            window.innerWidth < 1300 ? window.scrollTo(0, 1200) : window.scrollTo(0, 1400)
+            
         }else{
             router.push('/')
         }

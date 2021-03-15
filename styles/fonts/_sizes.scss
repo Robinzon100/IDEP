@@ -32,7 +32,7 @@ $f-size-p4: calc(14px + (18.4 - 14) * ((100vw - 300px) / (1900 - 700))) !importa
 
 .f-size-p4 {
     font-size: $f-size-p4;
-    line-height: 143.7%;
+    line-height: 158.7%;
 }
 
 
@@ -64,6 +64,7 @@ $f-size-p4: calc(14px + (18.4 - 14) * ((100vw - 300px) / (1900 - 700))) !importa
     font-size: $f-size-h5;
     line-height: 120.5%;
 }
+
 .f-size-h6 {
     font-size: $f-size-h6;
     line-height: 120.5%;

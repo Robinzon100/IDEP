@@ -1,0 +1,78 @@
+.software_main {
+    margin: 20vh 0;
+    position: relative;
+
+
+    .blob_purple{
+       position: absolute; 
+    }
+
+    .container {
+        max-width: 87rem;
+        width: 86%;
+        margin: 0 auto;
+        
+
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 15vh;
+
+            .card {
+                width: 20rem;
+                margin-bottom: 10vw;
+                // width: 100%;
+
+                a {
+                    color: inherit;
+
+                    svg{
+                        margin-left: .7rem;
+                    }
+                }
+
+                .image {
+                    border-radius: 30px;
+                    margin-top: 3rem;
+                    height: 50vh;
+                    width: 100%;
+
+                    background: {
+                        position: center;
+                        size: cover;
+                        repeat: no-repeat;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 740px) {
+    .software_main {
+
+        .container {
+            .cards {
+                .card {
+                    width: 100% !important;
+                    margin-top: 10vh;
+
+                    a{
+                        font-size: $f-size-h2;
+
+                    }
+
+
+                    .image {
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+
+}
