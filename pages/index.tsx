@@ -52,7 +52,7 @@ const Index = () => {
         <Media />
         <Identt />
         <Uptake />
-        {/* <div style={{ height: '130vh' }} /> */}
+        <div style={{ height: '50vh' }} />
         <Swap />
         <Software />
         <Newsletter />
